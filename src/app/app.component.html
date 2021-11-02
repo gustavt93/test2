@@ -1,0 +1,7 @@
+<fdc-mf-videosignature
+  *ngIf="token && url"
+  [token]="token"
+  [url]="'https://eboxtest.indenova.eu/tokenCheck.jsp'"
+  (response)="response($event)"
+>
+</fdc-mf-videosignature>
