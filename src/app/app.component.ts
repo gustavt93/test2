@@ -8,30 +8,46 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   public token: string = '';
   public url = 'https://eboxtest.indenova.eu/tokenCheck.jsp';
+  public frame_src = 'https://eboxtest.indenova.eu';
 
   public element;
 
   constructor() {}
 
-  ngOnInit() {
-    this.loadJS('abc');
-  }
+  ngOnInit() {}
 
   createScript() {
-    var scriptTag = document.createElement('script');
-    scriptTag.src =
-      'https://bpi-video-firma.azureedge.net/fdc-mf-videosignature/fdc-mf-videosignature.js';
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src =
+        'https://bpi-video-firma.azureedge.net/fdc-mf-videosignature/fdc-mf-videosignature.js';
+      // script.src = 'assets/fdc-mf-videosignature.js';
+      script.id = 'fdc-mf-videosignature';
 
-    setTimeout(() => {
-      document.body.appendChild(scriptTag);
-    }, 2000);
+      script.onload = () => {
+        resolve(true);
+      };
+
+      script.onerror = (err) => {
+        reject('Ocurrio un error cargando el script del microfront');
+      };
+
+      if (!document.getElementById('fdc-mf-videosignature')) {
+        document.body.appendChild(script);
+      }
+    });
   }
 
-  loadJS(token: string) {
-    if (token) {
-      this.token = token;
+  loadJS() {
+    if (this.token) {
       this.createScript();
     }
+  }
+
+  cleanToken() {
+    this.token = '';
   }
 
   response(e) {

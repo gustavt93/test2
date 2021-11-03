@@ -1,7 +1,12 @@
+<textarea name="" [(ngModel)]="token" cols="30" rows="10"></textarea> <br />
+<button id="initProcess" (click)="loadJS()">Enviar token</button>&nbsp;
+<button id="cleanToken" (click)="cleanToken()">Limpiar</button>
+
 <fdc-mf-videosignature
   *ngIf="token && url"
   [token]="token"
-  [url]="'https://eboxtest.indenova.eu/tokenCheck.jsp'"
+  [url]="url"
+  [frame_src]="frame_src"
   (response)="response($event)"
 >
 </fdc-mf-videosignature>
