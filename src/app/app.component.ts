@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   loadJS() {
+    debugger
     // service to validate token
     if (this.token) {
       this.createScript();
