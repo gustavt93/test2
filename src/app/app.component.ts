@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,8 @@ export class AppComponent implements OnInit {
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.async = true;
-      script.src =
-        'https://bpi-video-firma.azureedge.net/fdc-mf-videosignature/fdc-mf-videosignature.js';
+      script.src = `${environment.cdn}/${environment.version}/fdc-mf-videosignature.js`;
+      // dev
       // script.src = 'assets/fdc-mf-videosignature.js';
       script.id = 'fdc-mf-videosignature';
 
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   loadJS() {
+    // service to validate token
     if (this.token) {
       this.createScript();
     }
