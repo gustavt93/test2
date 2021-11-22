@@ -8,10 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent implements OnInit {
   public token: string = '';
-  public url = 'https://eboxtest.indenova.eu/tokenCheck.jsp';
-  public frame_src = 'https://eboxtest.indenova.eu';
-
-  public element;
+  public url = 'https://eboxtest.indenova.eu/';
 
   constructor() {}
 
@@ -42,7 +39,6 @@ export class AppComponent implements OnInit {
   }
 
   loadJS() {
-    // service to validate token
     if (this.token) {
       this.createScript();
     }
@@ -53,6 +49,6 @@ export class AppComponent implements OnInit {
   }
 
   response(e) {
-    console.log(e);
+    console.log(`Llego a test2: ${e}`);
   }
 }
