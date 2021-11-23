@@ -49,6 +49,10 @@ export class AppComponent implements OnInit {
   }
 
   response(e) {
-    console.log(`Llego a test2: ${e}`);
+    console.log(`Llego a test2 response: ${e}`);
+  }
+
+  close(e) {
+    console.log(`Llego a test2 close: ${e}`);
   }
 }
