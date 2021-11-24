@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
   }
 
   openMF() {
-    this.active = true;
+    if(this.token) {
+      this.active = true;
+    }
   }
 
   response(e) {
