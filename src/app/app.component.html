@@ -1,9 +1,9 @@
 <textarea name="" [(ngModel)]="token" cols="30" rows="10"></textarea> <br />
-<button id="initProcess" (click)="loadJS()">Enviar token</button>&nbsp;
+<button id="initProcess" (click)="openMF()">Enviar token</button>&nbsp;
 <button id="cleanToken" (click)="cleanToken()">Limpiar</button>
 
 <fdc-mf-videosignature
-  *ngIf="token && url"
+  *ngIf="token && url && active"
   [token]="token"
   [url]="url"
   (response)="response($event)"

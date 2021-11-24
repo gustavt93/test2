@@ -10,18 +10,22 @@ export class AppComponent implements OnInit {
   public token: string = '';
   public url = 'https://eboxtest.indenova.eu/';
 
+  public active: boolean = false;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createScript();
+  }
 
   createScript() {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.async = true;
-      script.src = `${environment.cdn}/${environment.version}/fdc-mf-videosignature.js`;
+      // script.src = `${environment.cdn}/${environment.version}/fdc-mf-videosignature.js`;
       // dev
-      // script.src = 'assets/fdc-mf-videosignature.js';
+      script.src = 'assets/fdc-mf-videosignature.js';
       script.id = 'fdc-mf-videosignature';
 
       script.onload = () => {
@@ -38,21 +42,21 @@ export class AppComponent implements OnInit {
     });
   }
 
-  loadJS() {
-    if (this.token) {
-      this.createScript();
-    }
-  }
-
-  cleanToken() {
-    this.token = '';
+  openMF() {
+    this.active = true;
   }
 
   response(e) {
+    this.active = false;
     console.log(`Llego a test2 response: ${e}`);
   }
 
   close(e) {
+    this.active = false;
     console.log(`Llego a test2 close: ${e}`);
+  }
+
+  cleanToken() {
+    this.token = '';
   }
 }
