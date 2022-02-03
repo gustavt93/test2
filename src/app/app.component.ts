@@ -1,42 +1,52 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { environment } from "src/environments/environment";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  public token: string = '';
-  public url = 'https://eboxtest.indenova.eu/';
+  public token: string = "";
+  public url = "https://eboxtest.indenova.eu/";
 
   public active: boolean = false;
 
-  constructor() {}
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.createScript();
+    this.render();
   }
 
-  createScript() {
+  async render() {
+    try {
+      await this.loadScript();
+    } catch (e) {
+      throw e;
+    } finally {
+      this.cd.detectChanges();
+    }
+  }
+
+  loadScript() {
     return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
+      const script = document.createElement("script");
+      script.type = "text/javascript";
       script.async = true;
       script.src = `${environment.cdn}/${environment.version}/fdc-mf-videosignature.js`;
       // dev
       // script.src = 'assets/fdc-mf-videosignature.js';
-      script.id = 'fdc-mf-videosignature';
+      script.id = "fdc-mf-videosignature";
 
       script.onload = () => {
         resolve(true);
       };
 
       script.onerror = (err) => {
-        reject('Ocurrio un error cargando el script del microfront');
+        reject("Ocurrio un error cargando el script del microfront");
       };
 
-      if (!document.getElementById('fdc-mf-videosignature')) {
+      if (!document.getElementById("fdc-mf-videosignature")) {
         document.body.appendChild(script);
       }
     });
@@ -59,6 +69,6 @@ export class AppComponent implements OnInit {
   }
 
   cleanToken() {
-    this.token = '';
+    this.token = "";
   }
 }

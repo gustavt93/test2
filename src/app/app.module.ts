@@ -1,8 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from "@angular/platform-browser";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
+
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
