@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   cdn: "https://bpi-video-firma.azureedge.net/fdc-mf-videosignature",
-  version: "0.0.51",
+  version: "0.0.52",
 };
 
 /*
