@@ -2,11 +2,11 @@
 <button id="initProcess" (click)="openMF()">Enviar token</button>&nbsp;
 <button id="cleanToken" (click)="cleanToken()">Limpiar</button>
 
-<fdc-mf-videosignature
+<fdc-mf-validation
   *ngIf="token && url && active"
   [token]="token"
   [url]="url"
   (response)="response($event)"
   (close)="close($event)"
 >
-</fdc-mf-videosignature>
+</fdc-mf-validation>

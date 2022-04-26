@@ -33,10 +33,10 @@ export class AppComponent implements OnInit {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.async = true;
-      script.src = `${environment.cdn}/${environment.version}/fdc-mf-videosignature.js`;
+      script.src = `${environment.cdn}/${environment.version}/fdc-mf-validation.js`;
       // dev
-      // script.src = 'assets/fdc-mf-videosignature.js';
-      script.id = "fdc-mf-videosignature";
+      // script.src = 'assets/fdc-mf-validation.js';
+      script.id = "fdc-mf-validation";
 
       script.onload = () => {
         resolve(true);
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         reject("Ocurrio un error cargando el script del microfront");
       };
 
-      if (!document.getElementById("fdc-mf-videosignature")) {
+      if (!document.getElementById("fdc-mf-validation")) {
         document.body.appendChild(script);
       }
     });
