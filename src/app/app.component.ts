@@ -10,12 +10,18 @@ export class AppComponent implements OnInit {
   public token: string = "";
   public url = "https://eboxtest.indenova.eu/";
 
+  public microfront: string;
   public active: boolean = false;
 
   constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    this.render();
+  ngOnInit() {}
+
+  openMF(microfront: string) {
+    if (this.token) {
+      this.microfront = microfront;
+      this.render();
+    }
   }
 
   async render() {
@@ -24,6 +30,7 @@ export class AppComponent implements OnInit {
     } catch (e) {
       throw e;
     } finally {
+      this.active = true;
       this.cd.detectChanges();
     }
   }
@@ -33,10 +40,10 @@ export class AppComponent implements OnInit {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.async = true;
-      script.src = `${environment.cdn}/${environment.version}/fdc-mf-validation.js`;
+      script.src = `${environment.cdn}/${this.microfront}/${environment.version}/${this.microfront}.js`;
       // dev
       // script.src = 'assets/fdc-mf-validation.js';
-      script.id = "fdc-mf-validation";
+      script.id = this.microfront;
 
       script.onload = () => {
         resolve(true);
@@ -46,16 +53,10 @@ export class AppComponent implements OnInit {
         reject("Ocurrio un error cargando el script del microfront");
       };
 
-      if (!document.getElementById("fdc-mf-validation")) {
+      if (!document.getElementById(this.microfront)) {
         document.body.appendChild(script);
       }
     });
-  }
-
-  openMF() {
-    if (this.token) {
-      this.active = true;
-    }
   }
 
   response(e) {

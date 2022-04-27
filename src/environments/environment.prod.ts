@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  cdn: "https://bpi-video-firma.azureedge.net/fdc-mf-validation",
-  version: "0.0.57",
+  cdn: "https://bpi-video-firma.azureedge.net",
+  version: "0.0.58",
 };
