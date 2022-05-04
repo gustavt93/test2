@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { environment } from "src/environments/environment";
+import { CONSTANTS } from "./commons/constants/constants";
 
 @Component({
   selector: "app-root",

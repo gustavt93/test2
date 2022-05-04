@@ -1,4 +1,4 @@
-const CONSTANTS = {
+export const CONSTANTS = {
   dev: {
     cdn: "https://bpi-video-firma.azureedge.net",
   },
