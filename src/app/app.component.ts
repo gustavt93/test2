@@ -7,11 +7,13 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  public token: string = "";
-  public url = "https://eboxtest.indenova.eu/";
+  token: string = "";
+  url = "https://eboxtest.indenova.eu/";
 
-  public microfront: string;
-  public active: boolean = false;
+  microfront: string;
+  active: boolean = false;
+
+  ambient = "dev";
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -36,11 +38,14 @@ export class AppComponent implements OnInit {
   }
 
   loadScript() {
+    const ambient = CONSTANTS[this.ambient];
+
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.async = true;
-      script.src = `${environment.cdn}/${this.microfront}/${environment.version}/${this.microfront}.js`;
+      script.src = `${ambient.cdn}/${this.microfront}/${environment.version}/${this.microfront}.js`;
+      console.log(script.src);
       // dev
       // script.src = 'assets/fdc-mf-validation.js';
       script.id = this.microfront;
