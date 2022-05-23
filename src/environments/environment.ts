@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   cdn: "https://bpi-video-firma.azureedge.net",
-  version: "0.0.78",
+  version: "0.0.79",
 };
 
 /*
