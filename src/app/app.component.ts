@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.async = true;
-      script.src = `${ambient.cdn}/${this.microfront}/${this.microfront}.js`;
+      script.src = `${ambient.cdn}/${this.microfront}/${environment.version}/${this.microfront}.js`;
       // dev
       // script.src = 'assets/fdc-mf-validation.js';
       script.id = this.microfront;
