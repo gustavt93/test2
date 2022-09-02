@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { CONSTANTS } from "./commons/constants/constants";
 
 @Component({
   selector: "app-root",
@@ -39,13 +38,13 @@ export class AppComponent implements OnInit {
   }
 
   loadScript() {
-    const ambient = CONSTANTS[this.ambient];
+    const ambient = environment[this.ambient];
 
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.async = true;
-      script.src = `${ambient.cdn}/${this.microfront}/${environment.version}/${this.microfront}.js`;
+      script.src = `${ambient.cdn}/${this.microfront}/${ambient.version}/${this.microfront}.js`;
       // dev
       // script.src = 'assets/fdc-mf-validation.js';
       script.id = this.microfront;

@@ -4,8 +4,14 @@
 
 export const environment = {
   production: false,
-  cdn: "https://bpi-video-firma.azureedge.net",
-  version: "0.0.97",
+  dev: {
+    cdn: "https://bpi-video-firma.azureedge.net",
+    version: "0.0.97",
+  },
+  uat: {
+    cdn: "https://cdneu2c001fdcuat01.azureedge.net",
+    version: "0.0.97",
+  },
 };
 
 /*
