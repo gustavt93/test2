@@ -6,11 +6,11 @@ export const environment = {
   production: false,
   dev: {
     cdn: "https://bpi-video-firma.azureedge.net",
-    version: "0.0.97",
+    version: "0.0.98",
   },
   uat: {
     cdn: "https://cdneu2c001fdcuat01.azureedge.net",
-    version: "0.0.97",
+    version: "0.0.98",
   },
 };
 
