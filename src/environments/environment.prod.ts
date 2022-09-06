@@ -5,7 +5,7 @@ export const environment = {
     version: "0.0.98",
   },
   uat: {
-    cdn: "https://bpi-video-firma.azureedge.net",
+    cdn: "https://cdneu2c001fdcuat01.azureedge.net",
     version: "0.0.98",
   },
 };
