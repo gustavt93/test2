@@ -6,6 +6,6 @@ export const environment = {
   },
   uat: {
     cdn: "https://cdneu2c001fdcuat01.azureedge.net",
-    version: "0.0.99",
+    version: "0.0.98",
   },
 };
