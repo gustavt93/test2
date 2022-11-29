@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
 })
 export class AppComponent implements OnInit {
   token: string = "";
-  url = "https://eboxtest.indenova.eu/";
+  url = "https://esignabox.indenova.eu/";
 
   microfront: string;
   active: boolean = false;
